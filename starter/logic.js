@@ -70,7 +70,7 @@ document.querySelectorAll('.buttona').forEach(item => {
         // replace the local storage with the old already input value and the new entries
         newLoad = (finalValues)
         localStorage.setItem('newLoad', JSON.stringify(newLoad))
-        //place a notification the local storage is updated that stays onscreen for 2 seconds
+        //place a notification the local storage is updated that stays onscreen for 2 seconds then goes blank
         loaded.innerText = "Appointment added to local storage"
         setTimeout(() => {
             loaded.innerText = ""

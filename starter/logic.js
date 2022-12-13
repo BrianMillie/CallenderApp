@@ -1,7 +1,7 @@
 // place todays date near top using moment
 
 var currentDay = document.getElementById('currentDay');
-var container = document.getElementById('container');
+var container = $('#container')[0];
 var currentDayMoment = moment().format('MMMM Do YYYY');
 currentDay.innerText = currentDayMoment
 var cont = [];
@@ -22,14 +22,14 @@ for (var i = 9; i < 18; i++) {
     cont[i].id = ('container' + i);
     cont[i].className += 'contain';
     cont[i].innertext = (moment(timer, 'h:mm').format('LT'));
-    document.getElementById('container').appendChild(cont[i]);
+    container.appendChild(cont[i]);
     document.getElementById(cont[i].id).innerText = formatted
     // add container for text area next to the time element
     cont[i] = document.createElement('textarea');
     cont[i].id = ('conttextarea' + i);
     cont[i].className += 'texta';
-    document.getElementById('container').appendChild(cont[i]);
-    document.getElementById(cont[i].id).innerText = (newLoad[i - 9])
+    container.appendChild(cont[i]);
+    document.getElementById(cont[i].id).innerText = (newLoad[i - 9]) || ""
     // based on the time element value and actual time colour code the boxes of the text inputs
     checktimeOne = moment(timer, 'H:00').hours()
     checktimeTwo = moment().hours()
@@ -47,7 +47,7 @@ for (var i = 9; i < 18; i++) {
     cont[i].id = ('button' + i);
     cont[i].className += 'buttona';
     cont[i].innerText = ('Save your item')
-    document.getElementById('container').appendChild(cont[i]);
+    container.appendChild(cont[i]);
     document.getElementById('button' + i).innertext = ('Save your item')
 }
 //Add an event listener for each item in the buttona class
@@ -66,7 +66,6 @@ document.querySelectorAll('.buttona').forEach(item => {
             document.getElementById('conttextarea16').value,
             document.getElementById('conttextarea17').value,
         ]
-        console.log(finalValues[0])
         // replace the local storage with the old already input value and the new entries
         newLoad = (finalValues)
         localStorage.setItem('newLoad', JSON.stringify(newLoad))
